@@ -194,8 +194,8 @@ def _clone(message, bot):
                     if EMOJI_THEME is True:
                         msg = f"<b>🗂️ Name: </b><{NAME_FONT}>{escape(name)}</{NAME_FONT}>\n"
                     else:
-                        msg = f"<b>Name: </b><{NAME_FONT}>{escape(name)}</{NAME_FONT}>\n"
-                    botpm = f"\n<b>Hey {tag}!, I have sent your cloned links in PM.</b>\n"
+                        msg = f"<b>Name: </b><{NAME_FONT}>{escape(name)}</{NAME_FONT}>\n\n"
+                    botpm = f"\n<b>Hey {tag}!, I have sent your cloned links in PM.</b>\n\n"
                     buttons = ButtonMaker()
                     b_uname = bot.get_me().username
                     botstart = f"http://t.me/{b_uname}"
@@ -208,7 +208,7 @@ def _clone(message, bot):
                     if EMOJI_THEME is True:
                         cc = f'\n<b>╰👤 #Clone_By: </b>{tag}\n\n'
                     else:
-                        cc = f'\n<b>╰ #Clone_By: </b>{tag}\n\n'
+                        cc = f'\n\n<b>cc: </b>{tag}\n\n'
                     if PICS:
                         sendPhoto(result + cc, bot, message, random.choice(PICS), button)
                     else:
@@ -238,8 +238,8 @@ def _clone(message, bot):
                             if EMOJI_THEME is True:
                                 msg = f"<b>🗂️ Name: </b><{NAME_FONT}>{escape(name)}</{NAME_FONT}>\n"
                             else:
-                                msg = f"<b>Name: </b><{NAME_FONT}>{escape(name)}</{NAME_FONT}>\n"
-                            botpm = f"\n<b>Hey {tag}!, I have sent your cloned links in PM.</b>\n"
+                                msg = f"<b>Name: </b><{NAME_FONT}>{escape(name)}</{NAME_FONT}>\n\n"
+                            botpm = f"\n<b>Hey {tag}!, I have sent your cloned links in PM.</b>\n\n"
                             buttons = ButtonMaker()
                             b_uname = bot.get_me().username
                             botstart = f"http://t.me/{b_uname}"
@@ -252,7 +252,7 @@ def _clone(message, bot):
                             if EMOJI_THEME is True:
                                 cc = f'\n<b>╰👤 #Clone_By: </b>{tag}\n\n'
                             else:
-                                cc = f'\n<b>╰ #Clone_By: </b>{tag}\n\n'
+                                cc = f'\n\n<b>cc: </b>{tag}\n\n'
                             if PICS:
                                 sendPhoto(result + cc, bot, message, random.choice(PICS), button)
                             else:
@@ -275,9 +275,9 @@ def _clone(message, bot):
             slmsg += f"├📐 Size: {size}\n"
             slmsg += f"╰👥 Added by: {tag} | <code>{user_id}</code>\n\n"
         else:
-            slmsg = f"╭ Name: <{NAME_FONT}>{escape(name)}</{NAME_FONT}>\n"
-            slmsg += f"├ Size: {size}\n"
-            slmsg += f"╰ Added by: {tag} | <code>{user_id}</code>\n\n"
+            slmsg = f"Name: <{NAME_FONT}>{escape(name)}</{NAME_FONT}>\n\n"
+            slmsg += f"Size: {size}\n\n"
+            slmsg += f"Adder: {tag} | <code>{user_id}</code>\n\n"
         if LINK_LOGS:
                 try:
                     upper = f"‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒\n"
@@ -302,7 +302,7 @@ def _clone(message, bot):
         if EMOJI_THEME is True:
             cc = f'\n<b>╰👤 #Clone_By: </b>{tag}\n\n'
         else:
-            cc = f'\n<b>╰ #Clone_By: </b>{tag}\n\n'
+            cc = f'\n\n<b>cc: </b>{tag}\n\n'
         if button in ["cancelled", ""]:
             sendMessage(f"{tag} {result}", bot, message)
         else:
