@@ -92,16 +92,24 @@ def stats(update, context):
                     f'<b>╰ 🔻 Download Data:</b> {recv}\n\n'
 
     else:
-            stats = f'<b>╭─《 BOT STATISTICS 》</b>\n' \
-                    f'<b>├  Updated On: </b>{last_commit}\n'\
-                    f'<b>├  Uptime: </b>{currentTime}\n'\
-                    f'<b>├  OS Uptime: </b>{osUptime}\n'\
-                    f'<b>├  CPU:</b> [{progress_bar(cpuUsage)}] {cpuUsage}%\n'\
-                    f'<b>├  RAM:</b> [{progress_bar(mem_p)}] {mem_p}%\n'\
-                    f'<b>├  Disk:</b> [{progress_bar(disk)}] {disk}%\n'\
-                    f'<b>├  Disk Free:</b> {free}\n'\
-                    f'<b>├  Upload Data:</b> {sent}\n'\
-                    f'<b>╰  Download Data:</b> {recv}\n\n'
+            stats = f'<b>Commit Date:</b> {last_commit}\n\n'\
+                    f'<b>Bot Version:</b> v22.08.2067\n'\
+                    f'<b>Bot Uptime:</b> {currentTime}\n'\
+                    f'<b>OS Uptime:</b> {osUptime}\n\n'\
+                    f'<b>Disk Space:</b> {total}\n'\
+                    f'<b>Used:</b> {used} | <b>Free:</b> {free}\n\n'\
+                    f'<b>Upload:</b> {sent}\n'\
+                    f'<b>Download:</b> {recv}\n\n'\
+                    f'<b>CPU:</b> {cpuUsage}%\n'\
+                    f'<b>RAM:</b> {mem_p}%\n'\
+                    f'<b>DISK:</b> {disk}%\n\n'\
+                    f'<b>Physical Cores:</b> {p_core}\n'\
+                    f'<b>Total Cores:</b> {t_core}\n\n'\
+                    f'<b>Swap:</b> {swap_t} | <b>Used:</b> {swap_p}%\n'\
+                    f'<b>Memory Total:</b> {mem_t}\n'\
+                    f'<b>Memory Free:</b> {mem_a}\n'\
+                    f'<b>Memory Used:</b> {mem_u}\n'
+
 
 
 
@@ -428,17 +436,17 @@ def main():
                     msg += f"⌚TIME: {time}\n"
                     msg += f"🌐TIMEZONE: {TIMEZONE}\n"
                 else:
-                    msg = f"😎Bot Restarted!\n"
-                    msg += f"📅DATE: {date}\n"
-                    msg += f"⌚TIME: {time}\n"
-                    msg += f"🌐TIMEZONE: {TIMEZONE}"
+                    msg = f"😎Bot Restarted😎\n"
+                    msg += f"DATE: {date}\n"
+                    msg += f"TIME: {time}\n"
+                    msg += f"TIMEZONE: {TIMEZONE}"
 
                 for tag, links in data.items():
                      msg += f"\n{tag}: "
                      for index, link in enumerate(links, start=1):
                          msg += f" <a href='{link}'>{index}</a> |"
                          if len(msg.encode()) > 4000:
-                             if '😎Restarted successfully❗' in msg and cid == chat_id:
+                             if '😎Restarted successfully😎' in msg and cid == chat_id:
                                  bot.editMessageText(msg, chat_id, msg_id, parse_mode='HTML', disable_web_page_preview=True)
                                  osremove(".restartmsg")
                              else:
@@ -447,7 +455,7 @@ def main():
                                  except Exception as e:
                                      LOGGER.error(e)
                              msg = ''
-                if '😎Restarted successfully❗' in msg and cid == chat_id:
+                if '😎Restarted successfully😎' in msg and cid == chat_id:
                      bot.editMessageText(msg, chat_id, msg_id, parse_mode='HTML', disable_web_page_preview=True)
                      osremove(".restartmsg")
                 else:
@@ -459,11 +467,11 @@ def main():
     if ospath.isfile(".restartmsg"):
         with open(".restartmsg") as f:
             chat_id, msg_id = map(int, f)
-        msg = f"😎Restarted successfully❗\n📅DATE: {date}\n⌚TIME: {time}\n🌐TIMEZONE: {TIMEZONE}\n"
+        msg = f"😎Restarted successfully😎 \nDATE: {date}\nTIME: {time}\nTIMEZONE: {TIMEZONE}\n"
         bot.edit_message_text(msg, chat_id, msg_id)
         osremove(".restartmsg")
     elif not notifier_dict and AUTHORIZED_CHATS:
-        text = f"😎Bot Restarted❗ \n📅DATE: {date} \n⌚TIME: {time} \n🌐TIMEZONE: {TIMEZONE}"
+        text = f"😎Bot Restarted😎 \nDATE: {date} \nTIME: {time} \nTIMEZONE: {TIMEZONE}"
         for id_ in AUTHORIZED_CHATS:
             try:
                 bot.sendMessage(chat_id=id_, text=text, parse_mode=ParseMode.HTML)
@@ -488,7 +496,7 @@ def main():
     dispatcher.add_handler(stats_handler)
     dispatcher.add_handler(log_handler)
     updater.start_polling(drop_pending_updates=IGNORE_PENDING_REQUESTS)
-    LOGGER.info("💥𝐁𝐨𝐭 𝐒𝐭𝐚𝐫𝐭𝐞𝐝❗")
+    LOGGER.info("😎𝐁𝐨𝐭 𝐒𝐭𝐚𝐫𝐭𝐞𝐝😎")
     signal(SIGINT, exit_clean_up)
 
 app.start()
